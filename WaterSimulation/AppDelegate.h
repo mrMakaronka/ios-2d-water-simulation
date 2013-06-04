@@ -1,11 +1,3 @@
-//
-//  AppDelegate.h
-//  WaterSimulation
-//
-//  Created by Artem Trofimov on 04.06.13.
-//  Copyright __MyCompanyName__ 2013. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 

@@ -1,13 +1,4 @@
-//
-//  AppDelegate.m
-//  WaterSimulation
-//
-//  Created by Artem Trofimov on 04.06.13.
-//  Copyright __MyCompanyName__ 2013. All rights reserved.
-//
-
 #import "cocos2d.h"
-
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 

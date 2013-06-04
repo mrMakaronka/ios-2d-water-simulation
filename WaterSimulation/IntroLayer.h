@@ -1,12 +1,3 @@
-//
-//  IntroLayer.h
-//  WaterSimulation
-//
-//  Created by Artem Trofimov on 04.06.13.
-//  Copyright __MyCompanyName__ 2013. All rights reserved.
-//
-
-
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
