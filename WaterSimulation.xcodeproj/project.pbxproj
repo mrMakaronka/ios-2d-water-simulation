@@ -134,7 +134,7 @@
 		ACE1A812175E79020039BA29 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A811175E79020039BA29 /* MainLayer.m */; };
 		ACE1A815175E79020039BA29 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A814175E79020039BA29 /* IntroLayer.m */; };
 		ACE1A81E175E792E0039BA29 /* WaterColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A81D175E792E0039BA29 /* WaterColumn.m */; };
-		ACE1A822175E79B70039BA29 /* WaterNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A821175E79B70039BA29 /* WaterNode.mm */; };
+		ACE1A822175E79B70039BA29 /* WaterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A821175E79B70039BA29 /* WaterNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,7 +403,7 @@
 		ACE1A81C175E792E0039BA29 /* WaterColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterColumn.h; sourceTree = "<group>"; };
 		ACE1A81D175E792E0039BA29 /* WaterColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterColumn.m; sourceTree = "<group>"; };
 		ACE1A820175E79B70039BA29 /* WaterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterNode.h; sourceTree = "<group>"; };
-		ACE1A821175E79B70039BA29 /* WaterNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaterNode.mm; sourceTree = "<group>"; };
+		ACE1A821175E79B70039BA29 /* WaterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -853,7 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE1A820175E79B70039BA29 /* WaterNode.h */,
-				ACE1A821175E79B70039BA29 /* WaterNode.mm */,
+				ACE1A821175E79B70039BA29 /* WaterNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -1036,7 +1036,7 @@
 				ACE1A812175E79020039BA29 /* MainLayer.m in Sources */,
 				ACE1A815175E79020039BA29 /* IntroLayer.m in Sources */,
 				ACE1A81E175E792E0039BA29 /* WaterColumn.m in Sources */,
-				ACE1A822175E79B70039BA29 /* WaterNode.mm in Sources */,
+				ACE1A822175E79B70039BA29 /* WaterNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,6 +1140,7 @@
 				ACE1A81A175E79020039BA29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
