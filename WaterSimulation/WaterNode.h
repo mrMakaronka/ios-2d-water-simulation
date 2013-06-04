@@ -1,7 +1,7 @@
 #import "cocos2d.h"
 #import "WaterColumn.h"
 
-#define COLUMN_COUNT 60
+#define COLUMN_COUNT 90
 #define WATER_HEIGHT 200
 
 #define TENSION 0.025f
