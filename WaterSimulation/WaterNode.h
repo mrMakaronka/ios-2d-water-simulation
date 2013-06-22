@@ -8,25 +8,21 @@
 #define DAMPENING 0.025f
 #define SPREAD 0.25f
 
-typedef struct Trapezoid {
-    CGPoint upperLeft;
-    CGPoint upperRight;
-    CGPoint bottomLeft;
-    CGPoint bottomRight;
-} Trapezoid;
+typedef struct Vertex {
+    GLushort x;
+    GLushort y;
+} Vertex;
 
-typedef struct TrapezoidColor {
-    ccColor4B upperLeft;
-    ccColor4B upperRight;
-    ccColor4B bottomLeft;
-    ccColor4B bottomRight;
-} TrapezoidColor;
+typedef struct Color {
+    ccColor4B color;
+} Color;
 
 @interface WaterNode : CCNode {
-    Trapezoid _trapezoidArray[COLUMN_COUNT];
-    TrapezoidColor _trapezoidColorsArray[COLUMN_COUNT];
     NSMutableArray *_columns;
     CGFloat _scale;
+    
+    Vertex _vertexArray[COLUMN_COUNT * 2];
+    Color _colorArray[COLUMN_COUNT * 2];
 }
 
 -(id)init;

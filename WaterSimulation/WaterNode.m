@@ -4,33 +4,37 @@
 
 -(id)init {
     if (self = [super init]) {
-        
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         _scale = winSize.width / (COLUMN_COUNT - 1);
         
-        ccColor4B lightBlue = ccc4(0, 50, 200, 255);
-        ccColor4B darkBlue = ccc4(0, 50, 100, 255);
-        
-        for (int i = 0; i < COLUMN_COUNT; i++) {
-            _trapezoidColorsArray[i].upperLeft = lightBlue;
-            _trapezoidColorsArray[i].upperRight = lightBlue;
-            _trapezoidColorsArray[i].bottomLeft = darkBlue;
-            _trapezoidColorsArray[i].bottomRight = darkBlue;
-        }
-        
-        _columns = [[NSMutableArray alloc] init];
-        for (int i = 0; i < COLUMN_COUNT; i++) {
-            WaterColumn *column = [WaterColumn alloc];
-            column.TargetHeight = WATER_HEIGHT;
-            column.Height = WATER_HEIGHT;
-            column.Speed = 0;
-            [_columns addObject:column];
-        }
+        [self initColors];
+        [self initColumns];
         
         self.shaderProgram = [[CCShaderCache sharedShaderCache] 
                               programForKey:kCCShader_PositionColor];
     }
     return self;
+}
+
+-(void) initColors {
+    ccColor4B lightBlue = ccc4(0, 50, 200, 255);
+    ccColor4B darkBlue = ccc4(0, 50, 100, 255);
+    
+    for (int i = 1; i < COLUMN_COUNT * 2; i += 2) {
+        _colorArray[i - 1].color = lightBlue;
+        _colorArray[i].color = darkBlue;
+    }
+}
+
+-(void) initColumns {
+    _columns = [[NSMutableArray alloc] init];
+    for (int i = 0; i < COLUMN_COUNT; i++) {
+        WaterColumn *column = [WaterColumn alloc];
+        column.TargetHeight = WATER_HEIGHT;
+        column.Height = WATER_HEIGHT;
+        column.Speed = 0;
+        [_columns addObject:column];
+    }
 }
 
 -(void)dealloc {
@@ -73,18 +77,12 @@
 -(void)draw {
     [self update];
     
-    for (int i = 1; i < COLUMN_COUNT; i++) {
-        _trapezoidArray[i-1].upperLeft.x = (i - 1) * _scale;
-        _trapezoidArray[i-1].upperLeft.y = ((WaterColumn*)[_columns objectAtIndex:i-1]).Height;
+    for (int i = 0; i < COLUMN_COUNT; i++) {
+        GLushort x = i * _scale;
+        GLushort y = ((WaterColumn*)[_columns objectAtIndex:i]).Height;
         
-        _trapezoidArray[i-1].upperRight.x = i * _scale;
-        _trapezoidArray[i-1].upperRight.y = ((WaterColumn*)[_columns objectAtIndex:i]).Height;
-        
-        _trapezoidArray[i-1].bottomLeft.x = _trapezoidArray[i-1].upperLeft.x;
-        _trapezoidArray[i-1].bottomLeft.y = 0;
-        
-        _trapezoidArray[i-1].bottomRight.x = _trapezoidArray[i-1].upperRight.x;
-        _trapezoidArray[i-1].bottomRight.y = 0;
+        _vertexArray[2 * i] = (struct Vertex) {x, y};
+        _vertexArray[2 * i + 1] = (struct Vertex) {x, 0};
     }
     
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position | kCCVertexAttribFlag_Color );
@@ -92,12 +90,12 @@
     [self.shaderProgram setUniformForModelViewProjectionMatrix];
 
     glEnableVertexAttribArray(kCCVertexAttribFlag_Position);
-    glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, _trapezoidArray);
+    glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_UNSIGNED_SHORT, GL_FALSE, 0, _vertexArray);
     
     glEnableVertexAttribArray(kCCVertexAttribFlag_Color);
-    glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, _trapezoidColorsArray);	
+    glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, _colorArray);
 
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, COLUMN_COUNT * 4);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, COLUMN_COUNT * 2);
 }
 
 -(void)Splash:(CGFloat)x :(CGFloat) speed {
