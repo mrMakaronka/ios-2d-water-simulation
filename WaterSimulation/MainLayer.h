@@ -1,13 +1,9 @@
-#import <GameKit/GameKit.h>
-#import "cocos2d.h"
-#import "AppDelegate.h"
-#import "WaterNode.h"
+@class WaterNode;
 
-@interface MainLayer : CCLayerColor
-{
+@interface MainLayer : CCLayerColor {
     WaterNode *_waterNode;
 }
 
-+(CCScene *) scene;
++ (CCScene *)scene;
 
 @end

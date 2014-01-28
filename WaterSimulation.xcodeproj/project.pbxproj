@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C98A04D24C750C498938BC9 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98A22F04729FB2F8DE8584 /* MainLayer.m */; };
+		3C98A7C3952C400CEE989F8E /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98A321E04F86EBC5C88AD1 /* IntroLayer.m */; };
 		ACE1A684175E79000039BA29 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE1A683175E79000039BA29 /* QuartzCore.framework */; };
 		ACE1A686175E79000039BA29 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE1A685175E79000039BA29 /* OpenGLES.framework */; };
 		ACE1A688175E79000039BA29 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE1A687175E79000039BA29 /* OpenAL.framework */; };
@@ -131,13 +133,15 @@
 		ACE1A807175E79020039BA29 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A806175E79020039BA29 /* vec4.c */; };
 		ACE1A80C175E79020039BA29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A80B175E79020039BA29 /* main.m */; };
 		ACE1A80F175E79020039BA29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A80E175E79020039BA29 /* AppDelegate.m */; };
-		ACE1A812175E79020039BA29 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A811175E79020039BA29 /* MainLayer.m */; };
-		ACE1A815175E79020039BA29 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A814175E79020039BA29 /* IntroLayer.m */; };
 		ACE1A81E175E792E0039BA29 /* WaterColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A81D175E792E0039BA29 /* WaterColumn.m */; };
 		ACE1A822175E79B70039BA29 /* WaterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE1A821175E79B70039BA29 /* WaterNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C98A0FB498B95F7A577C2D0 /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
+		3C98A22F04729FB2F8DE8584 /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLayer.m; sourceTree = "<group>"; };
+		3C98A321E04F86EBC5C88AD1 /* IntroLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		3C98A7A6021AB3667B177F0A /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
 		ACE1A67F175E79000039BA29 /* WaterSimulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterSimulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE1A683175E79000039BA29 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ACE1A685175E79000039BA29 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -396,10 +400,6 @@
 		ACE1A80B175E79020039BA29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ACE1A80D175E79020039BA29 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ACE1A80E175E79020039BA29 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ACE1A810175E79020039BA29 /* MainLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
-		ACE1A811175E79020039BA29 /* MainLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainLayer.m; sourceTree = "<group>"; };
-		ACE1A813175E79020039BA29 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		ACE1A814175E79020039BA29 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		ACE1A81C175E792E0039BA29 /* WaterColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterColumn.h; sourceTree = "<group>"; };
 		ACE1A81D175E792E0039BA29 /* WaterColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterColumn.m; sourceTree = "<group>"; };
 		ACE1A820175E79B70039BA29 /* WaterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterNode.h; sourceTree = "<group>"; };
@@ -426,6 +426,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C98A75CA38B168F82BBC772 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				3C98A22F04729FB2F8DE8584 /* MainLayer.m */,
+				3C98A7A6021AB3667B177F0A /* MainLayer.h */,
+				3C98A0FB498B95F7A577C2D0 /* IntroLayer.h */,
+				3C98A321E04F86EBC5C88AD1 /* IntroLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		ACE1A674175E79000039BA29 = {
 			isa = PBXGroup;
 			children = (
@@ -462,17 +473,14 @@
 		ACE1A695175E79000039BA29 /* WaterSimulation */ = {
 			isa = PBXGroup;
 			children = (
-				ACE1A81B175E79180039BA29 /* Structures */,
+				ACE1A81B175E79180039BA29 /* Models */,
 				ACE1A81F175E79AB0039BA29 /* Nodes */,
 				ACE1A80D175E79020039BA29 /* AppDelegate.h */,
 				ACE1A80E175E79020039BA29 /* AppDelegate.m */,
-				ACE1A810175E79020039BA29 /* MainLayer.h */,
-				ACE1A811175E79020039BA29 /* MainLayer.m */,
-				ACE1A813175E79020039BA29 /* IntroLayer.h */,
-				ACE1A814175E79020039BA29 /* IntroLayer.m */,
 				ACE1A696175E79000039BA29 /* Resources */,
 				ACE1A6B0175E79000039BA29 /* libs */,
 				ACE1A809175E79020039BA29 /* Supporting Files */,
+				3C98A75CA38B168F82BBC772 /* Layers */,
 			);
 			path = WaterSimulation;
 			sourceTree = "<group>";
@@ -840,13 +848,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		ACE1A81B175E79180039BA29 /* Structures */ = {
+		ACE1A81B175E79180039BA29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				ACE1A81C175E792E0039BA29 /* WaterColumn.h */,
 				ACE1A81D175E792E0039BA29 /* WaterColumn.m */,
 			);
-			name = Structures;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		ACE1A81F175E79AB0039BA29 /* Nodes */ = {
@@ -1050,10 +1058,10 @@
 				ACE1A807175E79020039BA29 /* vec4.c in Sources */,
 				ACE1A80C175E79020039BA29 /* main.m in Sources */,
 				ACE1A80F175E79020039BA29 /* AppDelegate.m in Sources */,
-				ACE1A812175E79020039BA29 /* MainLayer.m in Sources */,
-				ACE1A815175E79020039BA29 /* IntroLayer.m in Sources */,
 				ACE1A81E175E792E0039BA29 /* WaterColumn.m in Sources */,
 				ACE1A822175E79B70039BA29 /* WaterNode.m in Sources */,
+				3C98A04D24C750C498938BC9 /* MainLayer.m in Sources */,
+				3C98A7C3952C400CEE989F8E /* IntroLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

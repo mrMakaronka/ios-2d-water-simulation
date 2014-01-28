@@ -1,6 +1,3 @@
-#import "cocos2d.h"
-#import "WaterColumn.h"
-
 #define COLUMN_COUNT 80
 #define WATER_HEIGHT 200
 
@@ -18,15 +15,13 @@ typedef struct Color {
 } Color;
 
 @interface WaterNode : CCNode {
+@private
     NSMutableArray *_columns;
     CGFloat _scale;
-
     Vertex _vertexArray[COLUMN_COUNT * 2];
     Color _colorArray[COLUMN_COUNT * 2];
 }
 
-- (id)init;
-
-- (void)Splash:(CGFloat)index :(CGFloat)speed;
+- (void)splash:(CGFloat)index :(CGFloat)speed;
 
 @end

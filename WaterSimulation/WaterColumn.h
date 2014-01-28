@@ -1,16 +1,13 @@
-#import <Foundation/Foundation.h>
-
 @interface WaterColumn : NSObject {
-    @public
-    CGFloat TargetHeight;
-    CGFloat Height;
-    CGFloat Speed;
+@private
+    CGFloat _targetHeight;
 }
 
-@property(assign)CGFloat TargetHeight;
-@property(assign)CGFloat Height;
-@property(assign)CGFloat Speed;
+@property(assign, nonatomic) CGFloat Height;
+@property(assign, nonatomic) CGFloat Speed;
 
--(void) update:(CGFloat)dampening :(CGFloat) tension;
+- (id)initWithTargetHeight:(CGFloat)targetHeight :(CGFloat)height :(CGFloat)speed;
+
+- (void)update:(CGFloat)dampening :(CGFloat)tension;
 
 @end

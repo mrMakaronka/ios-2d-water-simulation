@@ -1,3 +1,5 @@
+#import "cocos2d.h"
+#import "WaterColumn.h"
 #import "WaterNode.h"
 
 @implementation WaterNode
@@ -29,10 +31,7 @@
 - (void)initColumns {
     _columns = [[NSMutableArray alloc] init];
     for (int i = 0; i < COLUMN_COUNT; i++) {
-        WaterColumn *column = [WaterColumn alloc];
-        column.TargetHeight = WATER_HEIGHT;
-        column.Height = WATER_HEIGHT;
-        column.Speed = 0;
+        WaterColumn *column = [[WaterColumn alloc] initWithTargetHeight:WATER_HEIGHT :WATER_HEIGHT :0];
         [_columns addObject:column];
         [column release];
     }
@@ -99,7 +98,7 @@
     glDrawArrays(GL_TRIANGLE_STRIP, 0, COLUMN_COUNT * 2);
 }
 
-- (void)Splash:(CGFloat)x :(CGFloat)speed {
+- (void)splash:(CGFloat)x :(CGFloat)speed {
     NSUInteger index = (NSUInteger) (x / _scale);
     if (index > 0 && index < COLUMN_COUNT) {
         WaterColumn *waterColumn = [_columns objectAtIndex:index];
