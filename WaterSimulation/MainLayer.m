@@ -2,7 +2,7 @@
 #import "WaterNode.h"
 #import "MainLayer.h"
 
-#define SPEED 220
+#define SPEED -220
 
 @implementation MainLayer
 
