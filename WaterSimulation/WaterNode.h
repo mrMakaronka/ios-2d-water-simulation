@@ -1,9 +1,4 @@
-#define COLUMN_COUNT 80
-#define WATER_HEIGHT 200
-
-#define TENSION 0.025f
-#define DAMPENING 0.025f
-#define SPREAD 0.25f
+static const NSInteger kColumnCount = 80;
 
 typedef struct Vertex {
     GLushort x;
@@ -18,8 +13,8 @@ typedef struct Color {
 @private
     NSMutableArray *_columns;
     CGFloat _scale;
-    Vertex _vertexArray[COLUMN_COUNT * 2];
-    Color _colorArray[COLUMN_COUNT * 2];
+    Vertex _vertexArray[kColumnCount * 2];
+    Color _colorArray[kColumnCount * 2];
 }
 
 - (void)splash:(CGFloat)index :(CGFloat)speed;

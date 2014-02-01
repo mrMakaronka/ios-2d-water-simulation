@@ -2,7 +2,7 @@
 #import "WaterNode.h"
 #import "MainLayer.h"
 
-#define SPEED -220
+static const NSInteger kSpeed = -220;
 
 @implementation MainLayer
 
@@ -43,7 +43,7 @@
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
 
-    [_waterNode splash:location.x :SPEED];
+    [_waterNode splash:location.x :kSpeed];
 }
 
 @end

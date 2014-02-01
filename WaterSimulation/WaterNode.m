@@ -1,13 +1,18 @@
 #import "cocos2d.h"
-#import "WaterColumn.h"
 #import "WaterNode.h"
+#import "WaterColumn.h"
+
+static const NSInteger kWaterHeight = 200;
+static const CGFloat kTension = 0.025f;
+static const CGFloat kDampening = 0.025f;
+static const CGFloat kSpread = 0.25f;
 
 @implementation WaterNode
 
 - (id)init {
     if (self = [super init]) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
-        _scale = winSize.width / (COLUMN_COUNT - 1);
+        _scale = winSize.width / (kColumnCount - 1);
 
         [self initColors];
         [self initColumns];
@@ -22,7 +27,7 @@
     ccColor4B lightBlue = ccc4(0, 50, 200, 255);
     ccColor4B darkBlue = ccc4(0, 50, 100, 255);
 
-    for (int i = 1; i < COLUMN_COUNT * 2; i += 2) {
+    for (int i = 1; i < kColumnCount * 2; i += 2) {
         _colorArray[i - 1].color = lightBlue;
         _colorArray[i].color = darkBlue;
     }
@@ -30,8 +35,8 @@
 
 - (void)initColumns {
     _columns = [[NSMutableArray alloc] init];
-    for (int i = 0; i < COLUMN_COUNT; i++) {
-        WaterColumn *column = [[WaterColumn alloc] initWithTargetHeight:WATER_HEIGHT :WATER_HEIGHT :0];
+    for (int i = 0; i < kColumnCount; i++) {
+        WaterColumn *column = [[WaterColumn alloc] initWithTargetHeight:kWaterHeight :kWaterHeight :0];
         [_columns addObject:column];
         [column release];
     }
@@ -44,32 +49,32 @@
 
 - (void)update {
 
-    for (NSUInteger i = 0; i < COLUMN_COUNT; i++) {
-        WaterColumn *waterColumn = [_columns objectAtIndex:i];
-        [waterColumn update:DAMPENING :TENSION];
+    for (NSUInteger i = 0; i < kColumnCount; i++) {
+        WaterColumn *waterColumn = _columns[i];
+        [waterColumn update:kDampening :kTension];
     }
 
-    CGFloat leftDeltas[COLUMN_COUNT];
-    CGFloat rightDeltas[COLUMN_COUNT];
+    CGFloat leftDeltas[kColumnCount];
+    CGFloat rightDeltas[kColumnCount];
 
     for (NSUInteger j = 0; j < 8; j++) {
-        for (NSUInteger i = 0; i < COLUMN_COUNT; i++) {
+        for (NSUInteger i = 0; i < kColumnCount; i++) {
 
             if (i > 0) {
-                leftDeltas[i] = SPREAD * ([[_columns objectAtIndex:i] Height] - [[_columns objectAtIndex:i - 1] Height]);
-                ((WaterColumn *) [_columns objectAtIndex:i - 1]).Speed += leftDeltas[i];
+                leftDeltas[i] = kSpread * ([_columns[i] Height] - [_columns[i - 1] Height]);
+                ((WaterColumn *) _columns[i - 1]).Speed += leftDeltas[i];
             }
-            if (i < COLUMN_COUNT - 1) {
-                rightDeltas[i] = SPREAD * ([[_columns objectAtIndex:i] Height] - [[_columns objectAtIndex:i + 1] Height]);
-                ((WaterColumn *) [_columns objectAtIndex:i + 1]).Speed += rightDeltas[i];
+            if (i < kColumnCount - 1) {
+                rightDeltas[i] = kSpread * ([_columns[i] Height] - [_columns[i + 1] Height]);
+                ((WaterColumn *) _columns[i + 1]).Speed += rightDeltas[i];
             }
         }
 
-        for (NSUInteger i = 0; i < COLUMN_COUNT; i++) {
+        for (NSUInteger i = 0; i < kColumnCount; i++) {
             if (i > 0)
-                ((WaterColumn *) [_columns objectAtIndex:i - 1]).Height += leftDeltas[i];
-            if (i < COLUMN_COUNT - 1)
-                ((WaterColumn *) [_columns objectAtIndex:i + 1]).Height += rightDeltas[i];
+                ((WaterColumn *) _columns[i - 1]).Height += leftDeltas[i];
+            if (i < kColumnCount - 1)
+                ((WaterColumn *) _columns[i + 1]).Height += rightDeltas[i];
         }
     }
 }
@@ -77,9 +82,9 @@
 - (void)draw {
     [self update];
 
-    for (NSUInteger i = 0; i < COLUMN_COUNT; i++) {
+    for (NSUInteger i = 0; i < kColumnCount; i++) {
         GLushort x = (GLushort) (i * _scale);
-        GLushort y = (GLushort) ((WaterColumn *) [_columns objectAtIndex:i]).Height;
+        GLushort y = (GLushort) ((WaterColumn *) _columns[i]).Height;
 
         _vertexArray[2 * i] = (struct Vertex) {x, y};
         _vertexArray[2 * i + 1] = (struct Vertex) {x, 0};
@@ -95,13 +100,13 @@
     glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, _colorArray);
     glEnableVertexAttribArray(kCCVertexAttribFlag_Color);
 
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, COLUMN_COUNT * 2);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, kColumnCount * 2);
 }
 
 - (void)splash:(CGFloat)x :(CGFloat)speed {
     NSUInteger index = (NSUInteger) (x / _scale);
-    if (index > 0 && index < COLUMN_COUNT) {
-        WaterColumn *waterColumn = [_columns objectAtIndex:index];
+    if (index > 0 && index < kColumnCount) {
+        WaterColumn *waterColumn = _columns[index];
         waterColumn.Speed = speed;
     }
 }
